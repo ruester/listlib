@@ -1,0 +1,365 @@
+Content-type: text/html
+
+<HTML><HEAD><TITLE>Manpage of listlib</TITLE>
+</HEAD><BODY>
+<H1>listlib</H1>
+Section: listlib (3)<BR>Updated: listlib<BR><A HREF="#index">Index</A>
+<A HREF="http://localhost/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+
+
+
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+<DL COMPACT>
+<DT>listlib - a generic list library<DD>
+<A NAME="ixAAC"></A>
+</DL>
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<A NAME="ixAAD"></A>
+
+<DL COMPACT>
+<DT><B>#include &lt;<A HREF="file:/usr/include/listlib.h">listlib.h</A>&gt;</B><DD>
+<A NAME="ixAAE"></A>
+
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<A NAME="ixAAF"></A>
+<A NAME="lbAE">&nbsp;</A>
+<H2>Structures</H2>
+
+<A NAME="ixAAG"></A>
+<DL COMPACT><DT><DD>
+
+
+<PRE>
+ The listlib contains following structures:
+ 
+ struct listlib_list {
+     void *first, *last;
+     unsigned long count;
+ }
+ 
+ struct listlib_element {
+     struct listlib_element *next, *prev;
+ }
+ 
+ Structures you want to add to the listlib_list have to look like this:
+ 
+ struct my_structure {
+     struct listlib_element foo;
+     ...
+ }
+
+</PRE>
+
+
+</DL>
+
+<DL COMPACT><DT><DD>
+</DL>
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>Functions</H2>
+
+<A NAME="ixAAH"></A>
+<DL COMPACT><DT><DD>
+
+
+<PRE>
+ Following functions are provided:
+
+</PRE>
+
+
+</DL>
+
+<DL COMPACT><DT><DD>
+</DL>
+
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<DT><B>struct listlib_list *listlib_safe_create_list(void);</B><DD>
+<A NAME="ixAAI"></A>
+
+
+<PRE>
+ Allocates memory for a listlib_list structure
+ and returns a pointer to the allocated memory.
+ If allocation fails the program will exited.
+
+</PRE>
+
+
+<DT><B>struct listlib_list *listlib_create_list(void);</B><DD>
+<A NAME="ixAAJ"></A>
+
+
+<PRE>
+ Allocates memory for a listlib_list structure
+ and returns a pointer to the allocated memory.
+
+</PRE>
+
+
+<DT><B>unsigned long listlib_free_list(struct listlib_list *</B><I>list</I><B>);</B><DD>
+<A NAME="ixAAK"></A>
+
+
+<PRE>
+ Frees the allocated memory of the list, which must have been returned
+ by a previous call of listlib_safe_create_list() or listlib_create_list().
+ The number of remaining elements in the list is returned.
+
+</PRE>
+
+
+<DT><B>void *listlib_remove_element(struct listlib_list *</B><I>list</I><B>, void *</B><I>element</I><B>);</B><DD>
+<A NAME="ixAAL"></A>
+
+
+<PRE>
+ Removes the element from the list.
+ If the element is NULL or the list does not
+ contain the element undefined behaviour occurs.
+
+</PRE>
+
+
+<DT><B>void listlib_push(struct listlib_list *</B><I>list</I><B>, void *</B><I>element</I><B>);</B><DD>
+<A NAME="ixAAM"></A>
+
+
+<PRE>
+ Adds the element at the end of the list.
+ If the element or the list is NULL undefined behaviour occurs.
+
+</PRE>
+
+
+<DT><B>void *listlib_pop(struct listlib_list *</B><I>list</I><B>);</B><DD>
+<A NAME="ixAAN"></A>
+
+
+<PRE>
+ Removes the last element of the list and returns it.
+ The list must contain at least one element.
+
+</PRE>
+
+
+<DT><B>void listlib_unshift(struct listlib_list *</B><I>list</I><B>, void *</B><I>element</I><B>);</B><DD>
+<A NAME="ixAAO"></A>
+
+
+<PRE>
+ Adds the element at the beginning of the list.
+ If the element or the list is NULL undefined behaviour occurs.
+
+</PRE>
+
+
+<DT><B>void *listlib_shift(struct listlib_list *</B><I>list</I><B>);</B><DD>
+<A NAME="ixAAP"></A>
+
+
+<PRE>
+ Removes the first element of the list and returns it.
+ The list must contain at least one element.
+
+</PRE>
+
+
+<DT><B>unsigned long listlib_index_of_element(struct listlib_list *</B><I>list</I><B>, void *</B><I>element</I><B>);</B><DD>
+<A NAME="ixAAQ"></A>
+
+
+<PRE>
+ Returns the index of the element.
+ The first element has the index 1.
+
+</PRE>
+
+
+</DL>
+</DL>
+
+<DL COMPACT><DT><DD>
+</DL>
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>Macros</H2>
+
+<A NAME="ixAAR"></A>
+<DL COMPACT><DT><DD>
+
+
+<PRE>
+ Following macros are provided:
+
+</PRE>
+
+
+</DL>
+
+<DL COMPACT><DT><DD>
+</DL>
+
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<DT><B>listlib_first(</B><I>listlib_list</I><B>)</B><DD>
+<A NAME="ixAAS"></A>
+
+
+<PRE>
+ macro for the first element of the list
+
+</PRE>
+
+
+<DT><B>listlib_last(</B><I>listlib_list</I><B>)</B><DD>
+<A NAME="ixAAT"></A>
+
+
+<PRE>
+ macro for the last element of the list
+
+</PRE>
+
+
+<DT><B>listlib_next(</B><I>listlib_element</I><B>)</B><DD>
+<A NAME="ixAAU"></A>
+
+
+<PRE>
+ macro for the pointer to the next element
+
+</PRE>
+
+
+<DT><B>listlib_prev(</B><I>listlib_element</I><B>)</B><DD>
+<A NAME="ixAAV"></A>
+
+
+<PRE>
+ macro for the pointer to the previous element
+
+</PRE>
+
+
+<DT><B>listlib_count(</B><I>listlib_list</I><B>)</B><DD>
+<A NAME="ixAAW"></A>
+
+
+<PRE>
+ macro for the number of elements in the list
+
+</PRE>
+
+
+</DL>
+</DL>
+
+<DL COMPACT><DT><DD>
+</DL>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+<A NAME="ixAAX"></A>
+
+
+<PRE>
+ #include &lt;<A HREF="file:/usr/include/stdlib.h">stdlib.h</A>&gt;
+ #include &lt;<A HREF="file:/usr/include/string.h">string.h</A>&gt;
+ #include &lt;<A HREF="file:/usr/include/stdio.h">stdio.h</A>&gt;
+ #include &lt;<A HREF="file:/usr/include/listlib.h">listlib.h</A>&gt;
+ 
+ struct person {
+     struct listlib_element h;
+     int age;
+     char name[10];
+ };
+ 
+ int main(int argc, char *argv[])
+ {
+     struct person p1, p2, p3;
+     struct person *temp;
+     struct listlib_list *person_list;
+ 
+     person_list = listlib_safe_create_list();
+ 
+     p1.age = 30;
+     strcpy(p1.name, &quot;Max&quot;);
+ 
+     p2.age = 45;
+     strcpy(p2.name, &quot;Paul&quot;);
+ 
+     p3.age = 20;
+     strcpy(p3.name, &quot;Linda&quot;);
+ 
+     listlib_unshift(person_list, &amp;p1);
+     listlib_unshift(person_list, &amp;p2);
+     listlib_push(person_list, &amp;p3);
+ 
+     temp = listlib_pop(person_list);
+     printf(&quot;%s is %d years old\n&quot;, temp-&gt;name, temp-&gt;age);
+     free(temp);
+ 
+     temp = listlib_pop(person_list);
+     printf(&quot;%s is %d years old\n&quot;, temp-&gt;name, temp-&gt;age);
+     free(temp);
+ 
+     temp = listlib_shift(person_list);
+     printf(&quot;%s is %d years old\n&quot;, temp-&gt;name, temp-&gt;age);
+     free(temp);
+ 
+     listlib_free_list(person_list);
+ 
+     return(0);
+ }
+
+</PRE>
+
+
+<A NAME="lbAI">&nbsp;</A>
+<H2>COPYRIGHT</H2>
+
+<A NAME="ixAAY"></A>
+
+
+<PRE>
+ Copyright (C) 2010 Matthias Ruester &lt;<A HREF="mailto:ruester@molgen.mpg.de">ruester@molgen.mpg.de</A>&gt;
+ Copyright (C) 2010 Max Planck Institut for Molecular Genetics
+
+</PRE>
+
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">Structures</A><DD>
+<DT><A HREF="#lbAF">Functions</A><DD>
+<DT><A HREF="#lbAG">Macros</A><DD>
+<DT><A HREF="#lbAH">EXAMPLE</A><DD>
+<DT><A HREF="#lbAI">COPYRIGHT</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="http://localhost/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 14:29:33 GMT, December 06, 2010
+</BODY>
+</HTML>
