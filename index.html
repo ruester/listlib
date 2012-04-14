@@ -81,11 +81,15 @@ int main(int argc, char *argv[])
 </code></pre>
 
         <h3>listlib functions</h3>
-<pre><code>struct listlib_list *listlib_safe_create_list(void);
+
+<h2>struct listlib_list *listlib_safe_create_list(void);</h2>
+<pre><code>
      Allocates memory for a listlib_list structure
      and returns a pointer to the allocated memory.
      If allocation fails the program will exited.
+</code></pre>
 
+<pre><code>
 struct listlib_list *listlib_create_list(void);
      Allocates memory for a listlib_list structure
      and returns a pointer to the allocated memory.
