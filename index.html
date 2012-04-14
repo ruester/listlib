@@ -80,6 +80,61 @@ int main(int argc, char *argv[])
 }
 </code></pre>
 
+        <h3>listlib functions</h3>
+<pre><code>struct listlib_list *listlib_safe_create_list(void);
+     Allocates memory for a listlib_list structure
+     and returns a pointer to the allocated memory.
+     If allocation fails the program will exited.
+
+struct listlib_list *listlib_create_list(void);
+     Allocates memory for a listlib_list structure
+     and returns a pointer to the allocated memory.
+
+unsigned long listlib_free_list(struct listlib_list *list);
+     Frees the allocated memory of the list, which must have been returned
+     by a previous call of listlib_safe_create_list() or listlib_create_list().
+     The number of remaining elements in the list is returned.
+
+void *listlib_remove_element(struct listlib_list *list, void *element);
+     Removes the element from the list.
+     If the element is NULL or the list does not
+     contain the element undefined behaviour occurs.
+
+void listlib_push(struct listlib_list *list, void *element);
+     Adds the element at the end of the list.
+     If the element or the list is NULL undefined behaviour occurs.
+
+void *listlib_pop(struct listlib_list *list);
+     Removes the last element of the list and returns it.
+     The list must contain at least one element.
+
+void listlib_unshift(struct listlib_list *list, void *element);
+     Adds the element at the beginning of the list.
+     If the element or the list is NULL undefined behaviour occurs.
+
+void *listlib_shift(struct listlib_list *list);
+     Removes the first element of the list and returns it.
+     The list must contain at least one element.
+
+unsigned long listlib_index_of_element(struct listlib_list *list, void *element);
+     Returns the index of the element.
+     The first element has the index 1.
+
+listlib_first(listlib_list)
+     macro for the first element of the list
+
+listlib_last(listlib_list)
+     macro for the last element of the list
+
+listlib_next(listlib_element)
+     macro for the pointer to the next element
+
+listlib_prev(listlib_element)
+     macro for the pointer to the previous element
+
+listlib_count(listlib_list)
+     macro for the number of elements in the list</code></pre>
+
       </section>
     </div>
     <footer>
