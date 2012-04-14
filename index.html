@@ -30,55 +30,54 @@
 
         <h3>How to use listlib</h3>
 
-<pre><code>
-        #include &#060;stdlib.h&#062;
-        #include &#060;string.h&#062;
-        #include &#060;stdio.h&#062;
-        #include &#060;listlib.h&#062;
+<pre><code>#include &#060;stdlib.h&#062;
+#include &#060;string.h&#062;
+#include &#060;stdio.h&#062;
+#include &#060;listlib.h&#062;
 
-        struct person {
-            struct listlib_element h;
-            int age;
-            char name[10];
-        };
+struct person {
+    struct listlib_element h;
+    int age;
+    char name[10];
+};
 
-        int main(int argc, char *argv[])
-        {
-            struct person p1, p2, p3;
-            struct person *temp;
-            struct listlib_list *person_list;
+int main(int argc, char *argv[])
+{
+    struct person p1, p2, p3;
+    struct person *temp;
+    struct listlib_list *person_list;
 
-            person_list = listlib_safe_create_list();
+    person_list = listlib_safe_create_list();
 
-            p1.age = 30;
-            strcpy(p1.name, "Max");
+    p1.age = 30;
+    strcpy(p1.name, "Max");
 
-            p2.age = 45;
-            strcpy(p2.name, "Paul");
+    p2.age = 45;
+    strcpy(p2.name, "Paul");
 
-            p3.age = 20;
-            strcpy(p3.name, "Linda");
+    p3.age = 20;
+    strcpy(p3.name, "Linda");
 
-            listlib_unshift(person_list, &p1);
-            listlib_unshift(person_list, &p2);
-            listlib_push(person_list, &p3);
+    listlib_unshift(person_list, &p1);
+    listlib_unshift(person_list, &p2);
+    listlib_push(person_list, &p3);
 
-            temp = listlib_pop(person_list);
-            printf("%s is %d years old\n", temp->name, temp->age);
-            free(temp);
+    temp = listlib_pop(person_list);
+    printf("%s is %d years old\n", temp->name, temp->age);
+    free(temp);
 
-            temp = listlib_pop(person_list);
-            printf("%s is %d years old\n", temp->name, temp->age);
-            free(temp);
+    temp = listlib_pop(person_list);
+    printf("%s is %d years old\n", temp->name, temp->age);
+    free(temp);
 
-            temp = listlib_shift(person_list);
-            printf("%s is %d years old\n", temp->name, temp->age);
-            free(temp);
+    temp = listlib_shift(person_list);
+    printf("%s is %d years old\n", temp->name, temp->age);
+    free(temp);
 
-            listlib_free_list(person_list);
+    listlib_free_list(person_list);
 
-            return(0);
-        }
+    return(0);
+}
 </code></pre>
 
       </section>
