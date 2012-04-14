@@ -85,56 +85,44 @@ int main(int argc, char *argv[])
 <h4>struct listlib_list *listlib_safe_create_list(void);</h4>
 <p>Allocates memory for a listlib_list structure and returns a pointer to the allocated memory. If allocation fails the program will exited.</p>
 
-<pre><code>
-struct listlib_list *listlib_create_list(void);
-     Allocates memory for a listlib_list structure
-     and returns a pointer to the allocated memory.
+<h4>struct listlib_list *listlib_create_list(void);</h4>
+<p>Allocates memory for a listlib_list structure and returns a pointer to the allocated memory.</p>
 
-unsigned long listlib_free_list(struct listlib_list *list);
-     Frees the allocated memory of the list, which must have been returned
-     by a previous call of listlib_safe_create_list() or listlib_create_list().
-     The number of remaining elements in the list is returned.
+<h4>unsigned long listlib_free_list(struct listlib_list *list);</h4>
+<p>Frees the allocated memory of the list, which must have been returned by a previous call of listlib_safe_create_list() or listlib_create_list(). The number of remaining elements in the list is returned.</p>
 
-void *listlib_remove_element(struct listlib_list *list, void *element);
-     Removes the element from the list.
-     If the element is NULL or the list does not
-     contain the element undefined behaviour occurs.
+<h4>void *listlib_remove_element(struct listlib_list *list, void *element);</h4>
+<p>Removes the element from the list. If the element is NULL or the list does not contain the element undefined behaviour occurs.</p>
 
-void listlib_push(struct listlib_list *list, void *element);
-     Adds the element at the end of the list.
-     If the element or the list is NULL undefined behaviour occurs.
+<h4>void listlib_push(struct listlib_list *list, void *element);</h4>
+<p>Adds the element at the end of the list. If the element or the list is NULL undefined behaviour occurs.</p>
 
-void *listlib_pop(struct listlib_list *list);
-     Removes the last element of the list and returns it.
-     The list must contain at least one element.
+<h4>void *listlib_pop(struct listlib_list *list);</h4>
+<p>Removes the last element of the list and returns it. The list must contain at least one element.</p>
 
-void listlib_unshift(struct listlib_list *list, void *element);
-     Adds the element at the beginning of the list.
-     If the element or the list is NULL undefined behaviour occurs.
+<h4>void listlib_unshift(struct listlib_list *list, void *element);</h4>
+<p>Adds the element at the beginning of the list. If the element or the list is NULL undefined behaviour occurs.</p>
 
-void *listlib_shift(struct listlib_list *list);
-     Removes the first element of the list and returns it.
-     The list must contain at least one element.
+<h4>void *listlib_shift(struct listlib_list *list);</h4>
+<p>Removes the first element of the list and returns it. The list must contain at least one element.</p>
 
-unsigned long listlib_index_of_element(struct listlib_list *list, void *element);
-     Returns the index of the element.
-     The first element has the index 1.
+<h4>unsigned long listlib_index_of_element(struct listlib_list *list, void *element);</h4>
+<p>Returns the index of the element. The first element has the index 1.</p>
 
-listlib_first(listlib_list)
-     macro for the first element of the list
+<h4>listlib_first(listlib_list)</h4>
+<p>macro for the first element of the list</p>
 
-listlib_last(listlib_list)
-     macro for the last element of the list
+<h4>listlib_last(listlib_list)</h4>
+<p>macro for the last element of the list</p>
 
-listlib_next(listlib_element)
-     macro for the pointer to the next element
+<h4>listlib_next(listlib_element)</h4>
+<p>macro for the pointer to the next element</p>
 
-listlib_prev(listlib_element)
-     macro for the pointer to the previous element
+<h4>listlib_prev(listlib_element)</h4>
+<p>macro for the pointer to the previous element</p>
 
-<b>listlib_count(listlib_list)</b>
-     macro for the number of elements in the list
-</code></pre>
+<h4>listlib_count(listlib_list)</h4>
+<p>macro for the number of elements in the list</p>
 
       </section>
     </div>
