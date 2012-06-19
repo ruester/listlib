@@ -1,6 +1,6 @@
 #COMPILING AND LINKING
 CC       = gcc
-CFLAGS   = -Wall -g -pedantic
+CFLAGS   = -Wall -g
 LDFLAGS  =
 ARCHIVER = ar
 
@@ -38,14 +38,16 @@ static: $(STATICLIB)
 $(LIBRARYVER): $(LIBRARY).o
 	$(CC) -shared -fpic -o $(LIBRARYVER) $(LIBRARY).o -lc -Wl,-soname,$(SONAME) $(LDFLAGS)
 
-listlib.o:
-	$(CC) -c -fpic -g -Wall $(LIBRARY).c
+$(LIBRARY).o: $(LIBRARY).c
+	$(CC) -c -fpic $(CFLAGS) $(LIBRARY).c
 
 $(STATICLIB): static$(LIBRARY).o
 	$(ARCHIVER) rcs $(STATICLIB) static$(LIBRARY).o $(LDFLAGS)
 
-staticlistlib.o:
-	$(CC) -c -g -Wall $(LIBRARY).c -o static$(LIBRARY).o
+static$(LIBRARY).o: $(LIBRARY).c
+	$(CC) -c $(CFLAGS) $(LIBRARY).c -o static$(LIBRARY).o
+
+check: test
 
 test: all
 	ln -fs $(LIBRARYVER) $(SONAME)
