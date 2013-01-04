@@ -208,4 +208,4 @@
 =head1 COPYRIGHT
 
  Copyright (C) 2010 Matthias Ruester <ruester@molgen.mpg.de>
- Copyright (C) 2010 Max Planck Institut for Molecular Genetics
+ Copyright (C) 2010 Max Planck Institute for Molecular Genetics
